@@ -74,6 +74,7 @@ export const ViewLine = styled.View`
 export const Line = styled.View`
   width: 50px;
   height: 5px;
+  border-radius: 20px;
   background: #eee;
 `;
 
@@ -116,6 +117,7 @@ export const Bottom = styled.View`
 export const BottomLeft = styled.View`
   flex-direction: row;
   align-items: flex-end;
+  height: 100%;
 `;
 
 export const Symbol = styled.Text`
@@ -129,6 +131,21 @@ export const Balance = styled.Text`
   font-size: 28px;
   color: #000;
   font-weight: bold;
+`;
+
+export const ViewHidden = styled.View`
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  margin-left: 5px;
+`;
+
+export const Hidden = styled.View`
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 5px;
+  margin-right: 10px;
 `;
 
 export const BottomRight = styled.View``;

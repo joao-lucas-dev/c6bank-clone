@@ -24,6 +24,8 @@ import {
   BottomLeft,
   Symbol,
   Balance,
+  ViewHidden,
+  Hidden,
   BottomRight,
   ButtonSee,
   See,
@@ -130,7 +132,14 @@ export default function App() {
                     {visible ? (
                       <Balance>1.234.876,00</Balance>
                     ) : (
-                      <Balance>******</Balance>
+                      <ViewHidden>
+                        <Hidden />
+                        <Hidden />
+                        <Hidden />
+                        <Hidden />
+                        <Hidden />
+                        <Hidden />
+                      </ViewHidden>
                     )}
                   </BottomLeft>
 
