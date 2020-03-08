@@ -1,10 +1,12 @@
 import { Animated, Dimensions } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
+import LinearGradient from 'react-native-linear-gradient';
 
 import styled from 'styled-components/native';
 
 import brasilIcon from './assets/brasil.png';
 import cardIcon from './assets/credit_card.png';
+import transferIcon from './assets/extrato.png';
 import colors from './styles/themes/colors';
 import fonts from './styles/themes/fonts';
 
@@ -295,5 +297,60 @@ export const ButtonCard = styled.TouchableOpacity`
 export const TitleButtonCard = styled.Text`
   font-size: 12px;
   color: ${colors.gray_dark};
+  font-family: ${fonts.light};
+`;
+
+export const ViewMyTransfers = styled.View`
+  padding: 20px;
+`;
+
+export const TitleTransfers = styled.Text`
+  font-size: 16px;
+  color: ${colors.gray_dark};
+  font-family: ${fonts.regular};
+  margin-bottom: 20px;
+`;
+
+export const ViewNoTransfer = styled.View`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ImageTransfer = styled.Image.attrs({
+  source: transferIcon,
+})`
+  width: 120px;
+  height: 120px;
+`;
+
+export const NoTranfersTitle = styled.Text`
+  font-size: 16px;
+  color: ${colors.gray_dark_light};
+  font-family: ${fonts.regular};
+  margin-bottom: 20px;
+`;
+
+export const ButtonAddCredit = styled.TouchableOpacity`
+  width: 100%;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+`;
+
+export const ViewGradient = styled(LinearGradient).attrs({
+  colors: ['#fee554', '#FFCD2E'],
+})`
+  width: 100%;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+`;
+
+export const TitleAddCredit = styled.Text`
+  font-size: 12px;
+  color: ${colors.dark};
   font-family: ${fonts.light};
 `;

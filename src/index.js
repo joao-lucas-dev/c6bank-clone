@@ -51,6 +51,14 @@ import {
   ViewInfoRight,
   ButtonCard,
   TitleButtonCard,
+  ViewMyTransfers,
+  TitleTransfers,
+  ViewNoTransfer,
+  ImageTransfer,
+  NoTranfersTitle,
+  ButtonAddCredit,
+  ViewGradient,
+  TitleAddCredit,
 } from './styles';
 
 const height =
@@ -253,6 +261,26 @@ export default function App() {
                   </InfoCard>
                 </CardCard>
               </ViewMyCards>
+
+              <Divider />
+
+              <ViewMyTransfers>
+                <TitleTransfers>Últimas transações</TitleTransfers>
+
+                <ViewNoTransfer>
+                  <ImageTransfer />
+
+                  <NoTranfersTitle>
+                    Você não tem transações recentes
+                  </NoTranfersTitle>
+
+                  <ButtonAddCredit>
+                    <ViewGradient>
+                      <TitleAddCredit>FAZER UM DEPÓSITO</TitleAddCredit>
+                    </ViewGradient>
+                  </ButtonAddCredit>
+                </ViewNoTransfer>
+              </ViewMyTransfers>
             </Main>
           </Card>
         </PanGestureHandler>
