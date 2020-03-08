@@ -1,6 +1,7 @@
-import React from 'react';
-import { StatusBar, Animated, Text } from 'react-native';
+import React, { useState } from 'react';
+import { Platform, Dimensions, StatusBar, Animated } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import {
   Container,
@@ -15,9 +16,27 @@ import {
   Main,
   ViewLine,
   Line,
+  ViewBalance,
+  Top,
+  Nationality,
+  TitleBalance,
+  Bottom,
+  BottomLeft,
+  Symbol,
+  Balance,
+  BottomRight,
+  ButtonSee,
+  See,
 } from './styles';
 
+const height =
+  Platform.OS === 'ios'
+    ? -(Dimensions.get('window').height / 2.5 - getStatusBarHeight() - 20)
+    : -(Dimensions.get('window').height / 2.5 - 20);
+
 export default function App() {
+  const [visible, setVisible] = useState(false);
+
   let offset = 0;
 
   const translateY = new Animated.Value(0);
@@ -41,7 +60,7 @@ export default function App() {
 
       offset += translationY;
 
-      if (translationY <= -80) {
+      if (translationY <= -50) {
         swiper = true;
       } else {
         translateY.setValue(offset);
@@ -50,11 +69,11 @@ export default function App() {
       }
 
       Animated.timing(translateY, {
-        toValue: swiper ? -400 : 0,
-        duration: 400,
+        toValue: swiper ? height : 0,
+        duration: 200,
         useNativeDriver: true,
       }).start(() => {
-        offset = swiper ? -400 : 0;
+        offset = swiper ? height : 0;
         translateY.setOffset(offset);
         translateY.setValue(0);
       });
@@ -74,8 +93,8 @@ export default function App() {
               transform: [
                 {
                   translateY: translateY.interpolate({
-                    inputRange: [-400, 0],
-                    outputRange: [-400, 0],
+                    inputRange: [height, 0],
+                    outputRange: [height, 0],
                     extrapolate: 'clamp',
                   }),
                 },
@@ -98,48 +117,30 @@ export default function App() {
               <ViewLine>
                 <Line />
               </ViewLine>
-              <Text>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-                ex temporibus eius nesciunt porro error odio reiciendis dolores
-                aliquid at qui nobis praesentium repellendus, ad, cum illo ullam
-                ut. Repellat! Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Sint ex temporibus eius nesciunt porro error
-                odio reiciendis dolores aliquid at qui nobis praesentium
-                repellendus, ad, cum illo ullam ut. Repellat! Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Sint ex temporibus eius
-                nesciunt porro error odio reiciendis dolores aliquid at qui
-                nobis praesentium repellendus, ad, cum illo ullam ut. Repellat!
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-                ex temporibus eius nesciunt porro error odio reiciendis dolores
-                aliquid at qui nobis praesentium repellendus, ad, cum illo ullam
-                ut. Repellat! Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Sint ex temporibus eius nesciunt porro error
-                odio reiciendis dolores aliquid at qui nobis praesentium
-                repellendus, ad, cum illo ullam ut. Repellat! Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Sint ex temporibus eius
-                nesciunt porro error odio reiciendis dolores aliquid at qui
-                nobis praesentium repellendus, ad, cum illo ullam ut. Repellat!
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-                ex temporibus eius nesciunt porro error odio reiciendis dolores
-                aliquid at qui nobis praesentium repellendus, ad, cum illo ullam
-                ut. Repellat! Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Sint ex temporibus eius nesciunt porro error
-                odio reiciendis dolores aliquid at qui nobis praesentium
-                repellendus, ad, cum illo ullam ut. Repellat! Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Sint ex temporibus eius
-                nesciunt porro error odio reiciendis dolores aliquid at qui
-                nobis praesentium repellendus, ad, cum illo ullam ut. Repellat!
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-                ex temporibus eius nesciunt porro error odio reiciendis dolores
-                aliquid at qui nobis praesentium repellendus, ad, cum illo ullam
-                ut. Repellat! Lorem ipsum dolor, sit amet consectetur
-                adipisicing elit. Sint ex temporibus eius nesciunt porro error
-                odio reiciendis dolores aliquid at qui nobis praesentium
-                repellendus, ad, cum illo ullam ut. Repellat! Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Sint ex temporibus eius
-                nesciunt porro error odio reiciendis dolores aliquid at qui
-                nobis praesentium repellendus, ad, cum illo ullam ut. Repellat!
-              </Text>
+
+              <ViewBalance>
+                <Top>
+                  <Nationality />
+                  <TitleBalance>Saldo</TitleBalance>
+                </Top>
+
+                <Bottom>
+                  <BottomLeft>
+                    <Symbol>R$</Symbol>
+                    {visible ? (
+                      <Balance>1.234.876,00</Balance>
+                    ) : (
+                      <Balance>******</Balance>
+                    )}
+                  </BottomLeft>
+
+                  <BottomRight>
+                    <ButtonSee onPress={() => setVisible(!visible)}>
+                      {visible ? <See>Ocultar</See> : <See>Exibir</See>}
+                    </ButtonSee>
+                  </BottomRight>
+                </Bottom>
+              </ViewBalance>
             </Main>
           </Card>
         </PanGestureHandler>
