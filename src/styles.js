@@ -4,10 +4,12 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 import brasilIcon from './assets/brasil.png';
+import colors from './styles/themes/colors';
+import fonts from './styles/themes/fonts';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  background: #000;
+  background: ${colors.dark};
   align-items: center;
 `;
 
@@ -18,14 +20,14 @@ export const ViewTitleBank = styled(Animated.View)`
 
 export const TitleBankLeft = styled.Text`
   font-size: 34px;
-  font-weight: bold;
-  color: #fff;
+  color: ${colors.light};
+  font-family: ${fonts.bold};
 `;
 
 export const TitleBankRight = styled.Text`
   font-size: 34px;
-  font-weight: 200;
-  color: #fff;
+  font-family: ${fonts.light};
+  color: ${colors.light};
 `;
 
 export const Card = styled(Animated.View)`
@@ -49,14 +51,14 @@ export const ViewLeft = styled.View``;
 export const Salutation = styled.Text`
   font-size: 14px;
   margin-bottom: 2px;
-  color: #fff;
-  font-weight: 500;
+  color: ${colors.light};
+  font-family: ${fonts.regular};
 `;
 
 export const Name = styled.Text`
   font-size: 24px;
-  font-weight: bold;
-  color: #fff;
+  font-family: ${fonts.bold};
+  color: ${colors.light};
 `;
 
 export const ViewRight = styled.View``;
@@ -64,18 +66,19 @@ export const ViewRight = styled.View``;
 export const ViewAvatar = styled.View`
   width: 40px;
   height: 40px;
-  background: #eee;
+  background: ${colors.gray_soft};
   border-radius: 20px;
   justify-content: center;
   align-items: center;
 `;
 
 export const NameAvatar = styled.Text`
-  color: #555;
+  color: ${colors.gray_dark};
+  font-family: ${fonts.light};
 `;
 
 export const Main = styled.View`
-  background: #fff;
+  background: ${colors.light};
   padding: 0 20px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -93,13 +96,13 @@ export const Line = styled.View`
   width: 50px;
   height: 5px;
   border-radius: 20px;
-  background: #eee;
+  background: ${colors.gray_soft};
 `;
 
 export const ViewBalance = styled.View`
   width: 100%;
   height: 85px;
-  background: #eee;
+  background: ${colors.gray_soft};
   border-radius: 5px;
   padding: 12px 20px;
 `;
@@ -121,8 +124,8 @@ export const Nationality = styled.Image.attrs({
 
 export const TitleBalance = styled.Text`
   font-size: 16px;
-  color: #333;
-  font-weight: 300;
+  color: ${colors.gray_dark};
+  font-family: ${fonts.light};
 `;
 
 export const Bottom = styled.View`
@@ -140,15 +143,15 @@ export const BottomLeft = styled.View`
 
 export const Symbol = styled.Text`
   font-size: 12px;
-  color: #333;
-  font-weight: 300;
+  color: ${colors.gray_dark_light};
   margin-right: 5px;
+  font-family: ${fonts.light};
 `;
 
 export const Balance = styled.Text`
   font-size: 28px;
-  color: #000;
-  font-weight: bold;
+  color: ${colors.dark};
+  font-family: ${fonts.regular};
 `;
 
 export const ViewHidden = styled.View`
@@ -161,7 +164,7 @@ export const ViewHidden = styled.View`
 export const Hidden = styled.View`
   width: 8px;
   height: 8px;
-  background: #000;
+  background: ${colors.dark};
   border-radius: 5px;
   margin-right: 10px;
 `;
@@ -173,7 +176,7 @@ export const ButtonSee = styled(BorderlessButton)``;
 export const See = styled.Text`
   font-size: 12px;
   text-decoration: underline;
-  color: #333;
-  font-weight: bold;
+  color: ${colors.gray_dark};
+  font-family: ${fonts.regular};
   text-transform: uppercase;
 `;
