@@ -4,6 +4,7 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 import brasilIcon from './assets/brasil.png';
+import cardIcon from './assets/credit_card.png';
 import colors from './styles/themes/colors';
 import fonts from './styles/themes/fonts';
 
@@ -79,7 +80,6 @@ export const NameAvatar = styled.Text`
 
 export const Main = styled.View`
   background: ${colors.light};
-  padding: 0 20px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   height: ${Dimensions.get('window').height}px;
@@ -97,6 +97,10 @@ export const Line = styled.View`
   height: 5px;
   border-radius: 20px;
   background: ${colors.gray_soft};
+`;
+
+export const ViewTop = styled.View`
+  padding: 0 20px;
 `;
 
 export const ViewBalance = styled.View`
@@ -182,10 +186,114 @@ export const See = styled.Text`
 `;
 
 export const ViewListActions = styled.View`
-  margin-top: 20px;
+  margin: 20px 0 10px;
 `;
 
 export const ListActions = styled.FlatList.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
 })``;
+
+export const Divider = styled.View`
+  width: 100%;
+  height: 8px;
+  background: ${colors.gray_soft};
+`;
+
+export const ViewMyCards = styled.View`
+  padding: 20px;
+`;
+
+export const TitleMyCards = styled.Text`
+  font-size: 16px;
+  color: ${colors.gray_dark};
+  font-family: ${fonts.regular};
+  margin-bottom: 20px;
+`;
+
+export const CardCard = styled.View.attrs({
+  shadowColor: '#999',
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.8,
+  shadowRadius: 2,
+  elevation: 2,
+})`
+  width: 100%;
+  height: 195px;
+  background: ${colors.light};
+  border-radius: 5px;
+`;
+
+export const StatusCard = styled.View`
+  flex-direction: row;
+  align-items: center;
+  margin: 15px 0;
+  padding: 0 20px;
+`;
+
+export const CircleCard = styled.View`
+  width: 8px;
+  height: 8px;
+  background: red;
+  border-radius: 5px;
+  margin-right: 5px;
+`;
+
+export const StatusName = styled.Text`
+  font-size: 10px;
+  color: ${colors.dark};
+  font-family: ${fonts.regular};
+`;
+
+export const ImageCard = styled.Image.attrs({
+  source: cardIcon,
+  resizeMode: 'stretch',
+})`
+  width: 90%;
+  padding: 0 20px;
+  align-self: center;
+`;
+
+export const InfoCard = styled.View.attrs({
+  shadowColor: '#999',
+  shadowOffset: { width: 0, height: -1 },
+  shadowOpacity: 0.5,
+  shadowRadius: 2,
+  elevation: 2,
+})`
+  background: ${colors.light};
+  padding: 0 20px;
+  height: 50px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const InfoCardTitle = styled.Text`
+  font-size: 12px;
+  color: ${colors.gray_dark};
+  font-family: ${fonts.light};
+  margin-bottom: 3px;
+`;
+
+export const CardNumber = styled.Text`
+  font-size: 14px;
+  color: ${colors.dark};
+  font-family: ${fonts.light};
+`;
+
+export const ViewInfoLeft = styled.View``;
+
+export const ViewInfoRight = styled.View``;
+
+export const ButtonCard = styled.TouchableOpacity`
+  border: 1px solid ${colors.gray_soft};
+  padding: 10px;
+  border-radius: 30px;
+`;
+
+export const TitleButtonCard = styled.Text`
+  font-size: 12px;
+  color: ${colors.gray_dark};
+  font-family: ${fonts.light};
+`;

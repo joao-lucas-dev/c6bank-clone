@@ -20,6 +20,7 @@ import {
   Main,
   ViewLine,
   Line,
+  ViewTop,
   ViewBalance,
   Top,
   Nationality,
@@ -35,6 +36,21 @@ import {
   See,
   ViewListActions,
   ListActions,
+  Divider,
+  ViewMyCards,
+  TitleMyCards,
+  CardCard,
+  StatusCard,
+  CircleCard,
+  StatusName,
+  ImageCard,
+  InfoCard,
+  InfoCardTitle,
+  CardNumber,
+  ViewInfoLeft,
+  ViewInfoRight,
+  ButtonCard,
+  TitleButtonCard,
 } from './styles';
 
 const height =
@@ -169,44 +185,74 @@ export default function App() {
                 <Line />
               </ViewLine>
 
-              <ViewBalance>
-                <Top>
-                  <Nationality />
-                  <TitleBalance>Saldo</TitleBalance>
-                </Top>
+              <ViewTop>
+                <ViewBalance>
+                  <Top>
+                    <Nationality />
+                    <TitleBalance>Saldo</TitleBalance>
+                  </Top>
 
-                <Bottom>
-                  <BottomLeft>
-                    <Symbol>R$</Symbol>
-                    {visible ? (
-                      <Balance>1.234.876,00</Balance>
-                    ) : (
-                      <ViewHidden>
-                        <Hidden />
-                        <Hidden />
-                        <Hidden />
-                        <Hidden />
-                        <Hidden />
-                        <Hidden />
-                      </ViewHidden>
-                    )}
-                  </BottomLeft>
+                  <Bottom>
+                    <BottomLeft>
+                      <Symbol>R$</Symbol>
+                      {visible ? (
+                        <Balance>1.234.876,00</Balance>
+                      ) : (
+                        <ViewHidden>
+                          <Hidden />
+                          <Hidden />
+                          <Hidden />
+                          <Hidden />
+                          <Hidden />
+                          <Hidden />
+                        </ViewHidden>
+                      )}
+                    </BottomLeft>
 
-                  <BottomRight>
-                    <ButtonSee onPress={() => setVisible(!visible)}>
-                      {visible ? <See>Ocultar</See> : <See>Exibir</See>}
-                    </ButtonSee>
-                  </BottomRight>
-                </Bottom>
-              </ViewBalance>
+                    <BottomRight>
+                      <ButtonSee onPress={() => setVisible(!visible)}>
+                        {visible ? <See>Ocultar</See> : <See>Exibir</See>}
+                      </ButtonSee>
+                    </BottomRight>
+                  </Bottom>
+                </ViewBalance>
 
-              <ViewListActions>
-                <ListActions
-                  data={data}
-                  keyExtractor={item => item.id}
-                  renderItem={({ item }) => <ActionItem item={item} />}
-                />
-              </ViewListActions>
+                <ViewListActions>
+                  <ListActions
+                    data={data}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => <ActionItem item={item} />}
+                  />
+                </ViewListActions>
+              </ViewTop>
+
+              <Divider />
+
+              <ViewMyCards>
+                <TitleMyCards>Meus cartões</TitleMyCards>
+
+                <CardCard>
+                  <StatusCard>
+                    <CircleCard />
+                    <StatusName>CARTÃO BLOQUEADO</StatusName>
+                  </StatusCard>
+
+                  <ImageCard />
+
+                  <InfoCard>
+                    <ViewInfoLeft>
+                      <InfoCardTitle>N do cartão</InfoCardTitle>
+                      <CardNumber>3421********7689</CardNumber>
+                    </ViewInfoLeft>
+
+                    <ViewInfoRight>
+                      <ButtonCard>
+                        <TitleButtonCard>GERENCIAR</TitleButtonCard>
+                      </ButtonCard>
+                    </ViewInfoRight>
+                  </InfoCard>
+                </CardCard>
+              </ViewMyCards>
             </Main>
           </Card>
         </PanGestureHandler>
