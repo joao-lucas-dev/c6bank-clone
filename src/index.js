@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Platform, Dimensions, StatusBar, Animated } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
@@ -61,11 +61,6 @@ import {
   TitleAddCredit,
 } from './styles';
 
-const height =
-  Platform.OS === 'ios'
-    ? -(Dimensions.get('window').height / 2.5 - getStatusBarHeight() - 20)
-    : -(Dimensions.get('window').height / 2.5 - 20);
-
 export default function App() {
   const [data] = useState([
     {
@@ -101,15 +96,22 @@ export default function App() {
   ]);
   const [visible, setVisible] = useState(false);
 
+  const heightMiddle = -Dimensions.get('window').height / 2;
+  const heightAll =
+    Platform.OS === 'ios'
+      ? -Dimensions.get('window').height + getStatusBarHeight() + 20
+      : -Dimensions.get('window').height + 20;
+
   let offset = 0;
 
-  const translateY = new Animated.Value(0);
+  const translateYTitle = new Animated.Value(0);
+  const translateYCard = new Animated.Value(0);
 
   const animatedEvent = Animated.event(
     [
       {
         nativeEvent: {
-          translationY: translateY,
+          translationY: translateYCard,
         },
       },
     ],
@@ -127,22 +129,41 @@ export default function App() {
       if (translationY <= -50) {
         swiper = true;
       } else {
-        translateY.setValue(offset);
-        translateY.setOffset(0);
+        translateYCard.setValue(offset);
+        translateYCard.setOffset(0);
         offset = 0;
       }
 
-      Animated.timing(translateY, {
-        toValue: swiper ? height : 0,
+      Animated.timing(translateYCard, {
+        toValue: swiper ? heightAll : heightMiddle,
         duration: 200,
         useNativeDriver: true,
       }).start(() => {
-        offset = swiper ? height : 0;
-        translateY.setOffset(offset);
-        translateY.setValue(0);
+        offset = swiper ? heightAll : heightMiddle;
+        translateYCard.setOffset(offset);
+        translateYCard.setValue(0);
       });
     }
   }
+
+  useEffect(() => {
+    Animated.sequence([
+      Animated.timing(translateYTitle, {
+        toValue: 150,
+        duration: 200,
+      }),
+
+      Animated.spring(translateYCard, {
+        toValue: heightMiddle,
+        duration: 200,
+        bounciness: 10,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      translateYCard.setOffset(heightMiddle);
+      translateYCard.setValue(0);
+    });
+  }, [translateYTitle, translateYCard, heightMiddle]);
 
   return (
     <>
@@ -150,15 +171,13 @@ export default function App() {
       <Container>
         <ViewTitleBank
           style={{
-            opacity: translateY.interpolate({
-              inputRange: [height / 1.5, 0],
-              outputRange: [0, 1],
-            }),
+            top: translateYTitle,
           }}
         >
           <TitleBankLeft>C6</TitleBankLeft>
           <TitleBankRight>BANK</TitleBankRight>
         </ViewTitleBank>
+
         <PanGestureHandler
           onGestureEvent={animatedEvent}
           onHandlerStateChange={onHandlerStateChanged}
@@ -167,9 +186,9 @@ export default function App() {
             style={{
               transform: [
                 {
-                  translateY: translateY.interpolate({
-                    inputRange: [height, 0],
-                    outputRange: [height, 0],
+                  translateY: translateYCard.interpolate({
+                    inputRange: [heightAll, heightMiddle, 0],
+                    outputRange: [heightAll, heightMiddle, 0],
                     extrapolate: 'clamp',
                   }),
                 },

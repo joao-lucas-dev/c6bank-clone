@@ -18,7 +18,7 @@ export const Container = styled.SafeAreaView`
 
 export const ViewTitleBank = styled(Animated.View)`
   flex-direction: row;
-  margin-top: ${Dimensions.get('window').height / 5}px;
+  top: ${Dimensions.get('window').height / 5}px;
 `;
 
 export const TitleBankLeft = styled.Text`
@@ -35,7 +35,7 @@ export const TitleBankRight = styled.Text`
 
 export const Card = styled(Animated.View)`
   position: absolute;
-  top: ${Dimensions.get('window').height / 2.5}px;
+  top: ${Dimensions.get('window').height}px;
   left: 0;
   right: 0;
   bottom: 0;
