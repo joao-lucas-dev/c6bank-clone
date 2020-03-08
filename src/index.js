@@ -5,6 +5,9 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import {
   Container,
+  ViewTitleBank,
+  TitleBankLeft,
+  TitleBankRight,
   Card,
   ViewInfo,
   ViewLeft,
@@ -86,6 +89,17 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" color="#000" />
       <Container>
+        <ViewTitleBank
+          style={{
+            opacity: translateY.interpolate({
+              inputRange: [height / 1.5, 0],
+              outputRange: [0, 1],
+            }),
+          }}
+        >
+          <TitleBankLeft>C6</TitleBankLeft>
+          <TitleBankRight>BANK</TitleBankRight>
+        </ViewTitleBank>
         <PanGestureHandler
           onGestureEvent={animatedEvent}
           onHandlerStateChange={onHandlerStateChanged}

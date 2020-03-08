@@ -8,6 +8,24 @@ import brasilIcon from './assets/brasil.png';
 export const Container = styled.SafeAreaView`
   flex: 1;
   background: #000;
+  align-items: center;
+`;
+
+export const ViewTitleBank = styled(Animated.View)`
+  flex-direction: row;
+  margin-top: ${Dimensions.get('window').height / 5}px;
+`;
+
+export const TitleBankLeft = styled.Text`
+  font-size: 34px;
+  font-weight: bold;
+  color: #fff;
+`;
+
+export const TitleBankRight = styled.Text`
+  font-size: 34px;
+  font-weight: 200;
+  color: #fff;
 `;
 
 export const Card = styled(Animated.View)`
