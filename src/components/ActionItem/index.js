@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import PropTypes from 'prop-types';
 
 import { Container, Title } from './styles';
 
-export default function ActionItem({ item }) {
+function ActionItem({ item }) {
   return (
     <Container>
       <Icon name={item.name_icon} size={30} color="#000" />
@@ -11,3 +13,9 @@ export default function ActionItem({ item }) {
     </Container>
   );
 }
+
+export default memo(ActionItem);
+
+ActionItem.propTypes = {
+  item: PropTypes.oneOf([PropTypes.object, PropTypes.array]).isRequired,
+};
