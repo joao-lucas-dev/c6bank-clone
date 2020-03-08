@@ -17,5 +17,5 @@ function ActionItem({ item }) {
 export default memo(ActionItem);
 
 ActionItem.propTypes = {
-  item: PropTypes.oneOf([PropTypes.object, PropTypes.array]).isRequired,
+  item: PropTypes.object.isRequired,
 };
