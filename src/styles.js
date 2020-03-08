@@ -180,3 +180,12 @@ export const See = styled.Text`
   font-family: ${fonts.regular};
   text-transform: uppercase;
 `;
+
+export const ViewListActions = styled.View`
+  margin-top: 20px;
+`;
+
+export const ListActions = styled.FlatList.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})``;

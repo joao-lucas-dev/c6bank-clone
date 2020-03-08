@@ -3,6 +3,7 @@ import { Platform, Dimensions, StatusBar, Animated } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
+import ActionItem from './components/ActionItem';
 import {
   Container,
   ViewTitleBank,
@@ -32,6 +33,8 @@ import {
   BottomRight,
   ButtonSee,
   See,
+  ViewListActions,
+  ListActions,
 } from './styles';
 
 const height =
@@ -40,6 +43,38 @@ const height =
     : -(Dimensions.get('window').height / 2.5 - 20);
 
 export default function App() {
+  const [data] = useState([
+    {
+      id: '1',
+      name_icon: 'description',
+      name: 'VER EXTRATO',
+    },
+    {
+      id: '2',
+      name_icon: 'credit-card',
+      name: 'CARTÃO',
+    },
+    {
+      id: '3',
+      name_icon: 'attach-money',
+      name: 'PAGAR',
+    },
+    {
+      id: '4',
+      name_icon: 'arrow-upward',
+      name: 'TRANSFERIR',
+    },
+    {
+      id: '5',
+      name_icon: 'arrow-downward',
+      name: 'TRAZER SALÁRIO',
+    },
+    {
+      id: '6',
+      name_icon: 'arrow-downward',
+      name: 'DEPOSITAR',
+    },
+  ]);
   const [visible, setVisible] = useState(false);
 
   let offset = 0;
@@ -164,6 +199,14 @@ export default function App() {
                   </BottomRight>
                 </Bottom>
               </ViewBalance>
+
+              <ViewListActions>
+                <ListActions
+                  data={data}
+                  keyExtractor={item => item.id}
+                  renderItem={({ item }) => <ActionItem item={item} />}
+                />
+              </ViewListActions>
             </Main>
           </Card>
         </PanGestureHandler>
