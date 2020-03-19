@@ -1,21 +1,34 @@
-<h1 align="center">
-  <img src="./photos/demo.gif" />
-</h1>
-
 <h1 align="center">C6 BANK</h1>
 
-<h3 align="center"> This is a study project about animations with layout of C6 Bank :books:</h3>
+<br>
 
-## :star: Features
+<p align="center">
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#camera-images">Images</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#electric_plug-getting-started">Getting started</a>
+</p>
+
+<br>
+
+<p align="center">
+  <img alt="Mockup" src="photos/demo.gif">
+</p>
+
+## :rocket: Technologies
 
 This project features all the latest tools and practices in mobile development!
 
 - ⚛️ **React Native** — A lib that provides a way to create native apps for Android and iOS
 
+
+## 💻 Project
+
+This is a study project about animations with layout of C6 Bank :books:
+
 ## :camera: Images
 
 <a href="https://github.com/joao-lucas-dev/c6bank-clone/tree/master/photos">Click here to see the images</a>
-
 
 ## :electric_plug: Getting started
 
